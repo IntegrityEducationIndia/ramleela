@@ -61,12 +61,14 @@
     text-decoration: none;
   }
   .nav-logo-mark {
-    width: 42px; height: 42px;
-    background: linear-gradient(135deg, var(--saffron), var(--deep-maroon));
+    width: 52px; height: 52px;
     border-radius: 50%;
+    overflow: hidden;
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Playfair Display', serif;
-    color: white; font-size: 18px; font-weight: 800;
+    flex-shrink: 0;
+  }
+  .nav-logo-mark img {
+    width: 100%; height: 100%; object-fit: cover;
   }
   .nav-brand {
     font-family: 'Playfair Display', serif;
@@ -1004,10 +1006,10 @@
 <!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">
-    <div class="nav-logo-mark">R</div>
+    <div class="nav-logo-mark"><img src="RamLeela-Logo.png" alt="Ramleela Logo"></div>
     <div class="nav-brand">
-      Ramleela Samajik<br>Vikas Kendra
-      <small>Arghakhanchi, Nepal</small>
+      Ramleela Samajik Vikas Kendra
+      <small>Sandhikharka - Arghakhanchi</small>
     </div>
   </a>
   <ul class="nav-links">
@@ -1568,8 +1570,8 @@
   <div class="footer-top">
     <div class="footer-brand">
       <div style="display:flex;align-items:center;gap:12px">
-        <div class="footer-logo-mark">R</div>
-        <span style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700">Ramleela Samajik<br>Vikas Kendra</span>
+        <div class="footer-logo-mark"><img src="RamLeela-Logo.png" alt="Ramleela Logo" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
+        <span style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700">Ramleela Samajik Vikas Kendra<br><small style="font-size:13px;font-weight:400;opacity:0.8">Sandhikharka - Arghakhanchi</small></span>
       </div>
       <p>Empowering rural communities through education, skill development, and accessible healthcare in the mountains of Arghakhanchi, Nepal.</p>
       <p style="margin-top:16px;font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,0.3);font-size:16px">"परहित सरिस धर्म नहिं भाई"</p>
