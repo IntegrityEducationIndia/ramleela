@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramleela Samajik Vikas Kendra</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #E8651A;
+    --deep-maroon: #7B1B2E;
+    --gold: #C9922A;
+    --gold-light: #F0C060;
+    --mountain-blue: #2B4C7E;
+    --mountain-mist: #8FA8C8;
+    --earth: #5C3D1E;
+    --cream: #FAF5EC;
+    --warm-white: #FDF9F3;
+    --forest: #2D5016;
+    --text-dark: #1A1208;
+    --text-mid: #4A3828;
+    --border: rgba(201,146,42,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-white);
+    color: var(--text-dark);
+    font-family: 'Crimson Pro', serif;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,245,236,0.97);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 64px;
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    width: 42px; height: 42px;
+    background: linear-gradient(135deg, var(--saffron), var(--deep-maroon));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    color: white; font-size: 18px; font-weight: 800;
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; font-weight: 700;
+    color: var(--deep-maroon);
+    line-height: 1.2;
+  }
+  .nav-brand small {
+    display: block; font-family: 'Space Mono', monospace;
+    font-size: 9px; font-weight: 400; color: var(--saffron);
+    letter-spacing: 0.15em; text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex; gap: 0; list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none; color: var(--text-mid);
+    font-family: 'Space Mono', monospace; font-size: 10px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 8px 14px; transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: 4px; left: 14px; right: 14px;
+    height: 1px; background: var(--saffron);
+    transform: scaleX(0); transition: transform 0.3s;
+  }
+  .nav-links a:hover { color: var(--saffron); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-cta {
+    background: var(--saffron); color: white !important;
+    padding: 8px 20px !important; border-radius: 2px;
+  }
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: var(--deep-maroon) !important; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    position: relative;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(26,18,8,0.72) 0%, rgba(43,76,126,0.45) 60%, rgba(26,18,8,0.8) 100%),
+      url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=80') center/cover no-repeat;
+  }
+
+  .hero-ornament {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(232,101,26,0.15) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 80% 20%, rgba(201,146,42,0.12) 0%, transparent 70%);
+  }
+
+  /* Mandala ring */
+  .hero-mandala {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 600px; height: 600px;
+    border: 1px solid rgba(240,192,96,0.12);
+    border-radius: 50%;
+    animation: spin-slow 60s linear infinite;
+  }
+  .hero-mandala::before, .hero-mandala::after {
+    content: ''; position: absolute; inset: 30px;
+    border: 1px solid rgba(240,192,96,0.08);
+    border-radius: 50%;
+  }
+  .hero-mandala::after { inset: 80px; animation: spin-slow 40s linear infinite reverse; }
+
+  @keyframes spin-slow { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center;
+    padding: 120px 5vw 80px;
+    max-width: 900px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold-light);
+    margin-bottom: 24px;
+    animation: fadeUp 1s 0.2s both;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 6vw, 76px);
+    font-weight: 800; color: white;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    animation: fadeUp 1s 0.4s both;
+  }
+  .hero-title em {
+    font-style: italic; color: var(--gold-light);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(16px, 2vw, 22px);
+    color: rgba(255,255,255,0.78);
+    margin-bottom: 16px;
+    animation: fadeUp 1s 0.55s both;
+  }
+
+  .hero-sanskrit {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+    animation: fadeUp 1s 0.65s both;
+  }
+  .hero-translation {
+    font-size: 14px; color: rgba(255,255,255,0.55);
+    letter-spacing: 0.05em;
+    margin-bottom: 48px;
+    animation: fadeUp 1s 0.7s both;
+  }
+
+  .hero-actions {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    animation: fadeUp 1s 0.85s both;
+  }
+
+  .btn-primary {
+    background: var(--saffron);
+    color: white; text-decoration: none;
+    padding: 14px 36px; font-family: 'Space Mono', monospace;
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    border: none; cursor: pointer; transition: all 0.3s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .btn-primary:hover { background: var(--gold); transform: translateY(-2px); }
+
+  .btn-outline {
+    background: transparent;
+    color: white; text-decoration: none;
+    padding: 13px 35px; font-family: 'Space Mono', monospace;
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.4); cursor: pointer;
+    transition: all 0.3s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .btn-outline:hover { border-color: var(--gold-light); color: var(--gold-light); }
+
+  .hero-scroll {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    animation: fadeUp 1s 1.2s both;
+  }
+  .hero-scroll span {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+  .scroll-line {
+    width: 1px; height: 48px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse { 0%,100%{opacity:0.4;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.2)} }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--deep-maroon);
+    padding: 28px 5vw;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    position: relative; z-index: 10;
+  }
+  .stat-item {
+    text-align: center; padding: 16px 12px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px; font-weight: 800; color: var(--gold-light);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.55); margin-top: 6px;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 5vw; }
+
+  .section-header {
+    max-width: 680px; margin-bottom: 64px;
+  }
+  .section-header.centered { margin-left: auto; margin-right: auto; text-align: center; }
+
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--saffron); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .eyebrow.centered { justify-content: center; }
+  .eyebrow::before, .eyebrow.centered::after {
+    content: ''; flex: 0 0 32px; height: 1px; background: var(--saffron);
+  }
+  .eyebrow::before { display: none; }
+  .eyebrow.centered::before { display: block; }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 52px); font-weight: 700;
+    color: var(--text-dark); line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  h2 em { font-style: italic; color: var(--deep-maroon); }
+
+  .section-lead {
+    font-size: 19px; color: var(--text-mid);
+    font-weight: 300; line-height: 1.8;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--cream);
+    position: relative; overflow: hidden;
+  }
+  #about::before {
+    content: 'ॐ';
+    position: absolute; right: -40px; top: 50%; transform: translateY(-50%);
+    font-size: 400px; opacity: 0.03; color: var(--deep-maroon);
+    font-family: serif; pointer-events: none;
+    line-height: 1;
+  }
+
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+  }
+
+  .about-image-wrap {
+    position: relative;
+  }
+  .about-img-frame {
+    width: 100%; aspect-ratio: 4/5;
+    background:
+      linear-gradient(135deg, rgba(123,27,46,0.8), rgba(43,76,126,0.7)),
+      url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80') center/cover;
+    position: relative;
+  }
+  .about-img-frame::before {
+    content: ''; position: absolute;
+    inset: -12px; border: 1px solid var(--gold);
+    opacity: 0.4; pointer-events: none;
+  }
+  .about-img-frame::after {
+    content: ''; position: absolute;
+    inset: -24px; border: 1px solid var(--saffron);
+    opacity: 0.2; pointer-events: none;
+  }
+
+  .about-card {
+    position: absolute; bottom: -24px; right: -24px;
+    background: var(--saffron); color: white;
+    padding: 24px 28px; max-width: 200px;
+  }
+  .about-card-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px; font-weight: 800; line-height: 1;
+  }
+  .about-card-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+    margin-top: 4px; opacity: 0.85;
+  }
+
+  .about-text .quote-block {
+    border-left: 3px solid var(--saffron);
+    padding: 20px 24px;
+    background: rgba(232,101,26,0.06);
+    margin: 32px 0;
+  }
+  .about-text .quote-block .sanskrit {
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-size: 22px; color: var(--deep-maroon);
+    margin-bottom: 6px;
+  }
+  .about-text .quote-block cite {
+    font-size: 13px; color: var(--saffron);
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.05em; font-style: normal;
+  }
+
+  /* ── PROGRAMS ── */
+  #programs { background: var(--warm-white); }
+
+  .programs-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    margin-top: 64px;
+  }
+
+  .program-card {
+    position: relative; overflow: hidden;
+    background: white;
+    border: 1px solid var(--border);
+    padding: 48px 36px;
+    transition: transform 0.4s, box-shadow 0.4s;
+    cursor: default;
+  }
+  .program-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    z-index: 2;
+  }
+  .program-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: var(--saffron);
+    transform: scaleX(0); transition: transform 0.4s;
+    transform-origin: left;
+  }
+  .program-card:hover::before { transform: scaleX(1); }
+
+  .program-card.featured {
+    background: var(--deep-maroon); color: white;
+    grid-row: span 1;
+  }
+  .program-card.featured::before { background: var(--gold-light); }
+  .program-card.future {
+    background: var(--mountain-blue); color: white;
+  }
+  .program-card.future::before { background: var(--mountain-mist); }
+
+  .program-icon {
+    width: 56px; height: 56px; margin-bottom: 28px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+  }
+  .program-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 700; margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .program-card p { font-size: 16px; line-height: 1.75; opacity: 0.82; }
+
+  .program-tags {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px;
+  }
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid currentColor; opacity: 0.65;
+    border-radius: 1px;
+  }
+
+  .pilot-badge {
+    display: inline-block;
+    background: var(--gold); color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 8px; letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 3px 10px; margin-bottom: 16px;
+  }
+
+  /* ── STUDENT TRACKER ── */
+  #tracker {
+    background: var(--cream);
+  }
+
+  .tracker-layout {
+    display: grid; grid-template-columns: 300px 1fr; gap: 48px;
+    margin-top: 48px;
+  }
+
+  .student-list {
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .student-list-header {
+    background: var(--deep-maroon); color: white;
+    padding: 16px 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  }
+  .student-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 20px; cursor: pointer;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  .student-item:hover, .student-item.active {
+    background: rgba(232,101,26,0.08);
+  }
+  .student-item.active {
+    border-left: 3px solid var(--saffron);
+  }
+  .student-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--saffron), var(--deep-maroon));
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: 16px; flex-shrink: 0;
+  }
+  .student-info { flex: 1; min-width: 0; }
+  .student-name {
+    font-size: 15px; font-weight: 600; color: var(--text-dark);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .student-class {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px; letter-spacing: 0.1em; color: var(--saffron);
+  }
+  .student-status {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #4CAF50; flex-shrink: 0;
+  }
+  .student-status.avg { background: var(--gold); }
+
+  .profile-panel {
+    border: 1px solid var(--border);
+    background: white; overflow: hidden;
+  }
+  .profile-header {
+    background: linear-gradient(135deg, var(--deep-maroon), var(--mountain-blue));
+    color: white; padding: 36px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .profile-avatar-lg {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 700; flex-shrink: 0;
+    border: 2px solid rgba(255,255,255,0.3);
+  }
+  .profile-meta h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; color: white; margin-bottom: 4px;
+  }
+  .profile-meta p {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .profile-body { padding: 36px; }
+
+  .profile-tabs {
+    display: flex; border-bottom: 1px solid var(--border);
+    margin-bottom: 32px; gap: 0;
+  }
+  .tab-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 10px 20px; border: none; background: none; cursor: pointer;
+    color: var(--text-mid); border-bottom: 2px solid transparent;
+    transition: all 0.2s; margin-bottom: -1px;
+  }
+  .tab-btn.active { color: var(--saffron); border-bottom-color: var(--saffron); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .metrics-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    margin-bottom: 32px;
+  }
+  .metric-box {
+    background: var(--cream); padding: 20px;
+    border-left: 3px solid var(--saffron);
+  }
+  .metric-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 700; color: var(--deep-maroon);
+    line-height: 1;
+  }
+  .metric-lab {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-mid); margin-top: 4px;
+  }
+
+  .progress-list { display: flex; flex-direction: column; gap: 16px; }
+  .progress-item { }
+  .progress-label {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 14px; margin-bottom: 6px;
+  }
+  .progress-label span:last-child {
+    font-family: 'Space Mono', monospace; font-size: 12px;
+    color: var(--saffron);
+  }
+  .progress-bar {
+    height: 4px; background: rgba(0,0,0,0.08); border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--saffron), var(--gold));
+    border-radius: 2px;
+    transition: width 1s ease;
+  }
+
+  /* Health tab */
+  .health-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+    margin-bottom: 24px;
+  }
+  .health-card {
+    background: var(--cream); padding: 18px 20px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .health-icon { font-size: 24px; }
+  .health-val { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--deep-maroon); }
+  .health-name { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); }
+  .health-status-badge {
+    display: inline-block; padding: 2px 8px;
+    font-family: 'Space Mono', monospace; font-size: 8px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .badge-good { background: rgba(76,175,80,0.12); color: #2E7D32; }
+  .badge-avg { background: rgba(255,152,0,0.12); color: #E65100; }
+
+  .test-history { margin-top: 16px; }
+  .test-history h4 {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--text-mid); margin-bottom: 12px;
+  }
+  .test-row {
+    display: grid; grid-template-columns: 1fr 1fr 1fr 80px;
+    gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .test-row.header {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-mid);
+  }
+
+  /* ── CASE STUDIES ── */
+  #impact {
+    background: var(--text-dark);
+    color: white;
+    position: relative; overflow: hidden;
+  }
+  #impact::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(123,27,46,0.4) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cases-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    margin-top: 64px;
+  }
+
+  .case-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 40px 32px;
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+  }
+  .case-card:hover { background: rgba(255,255,255,0.09); }
+
+  .case-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px; font-weight: 800;
+    color: rgba(240,192,96,0.08); line-height: 1;
+    position: absolute; top: -8px; right: 16px;
+    pointer-events: none;
+  }
+
+  .case-location {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--saffron); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .case-location::before {
+    content: '📍'; font-size: 12px;
+  }
+
+  .case-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; color: white; margin-bottom: 14px; line-height: 1.3;
+  }
+  .case-card p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.75; }
+
+  .case-tag {
+    display: inline-block; margin-top: 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 12px;
+    border: 1px solid rgba(240,192,96,0.3); color: var(--gold-light);
+  }
+
+  .case-card.featured-case {
+    background: linear-gradient(135deg, rgba(123,27,46,0.6), rgba(43,76,126,0.4));
+    grid-column: span 1;
+    border-color: rgba(232,101,26,0.3);
+  }
+
+  /* ── ENDORSEMENTS ── */
+  #endorsements {
+    background: var(--cream);
+  }
+
+  .testimonials-track {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+    margin-top: 64px;
+  }
+  .testimonial {
+    background: white; padding: 40px 36px;
+    border-bottom: 3px solid var(--saffron);
+    position: relative;
+  }
+  .testimonial::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 80px; color: var(--saffron); opacity: 0.15;
+    position: absolute; top: 12px; left: 24px;
+    line-height: 1;
+  }
+  .testimonial p {
+    font-size: 17px; line-height: 1.8; color: var(--text-mid);
+    position: relative; z-index: 1;
+  }
+  .testimonial-author {
+    margin-top: 24px; display: flex; align-items: center; gap: 12px;
+  }
+  .author-dot {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--saffron), var(--deep-maroon));
+    flex-shrink: 0;
+  }
+  .author-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--deep-maroon);
+  }
+  .author-role { font-size: 13px; color: var(--text-mid); }
+
+  /* ── GET INVOLVED ── */
+  #get-involved {
+    background: var(--warm-white);
+  }
+
+  .involve-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    margin-top: 64px;
+  }
+  .involve-card {
+    padding: 48px 36px;
+    border: 1px solid var(--border);
+    text-align: center;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .involve-card:hover {
+    background: var(--deep-maroon); color: white;
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(123,27,46,0.25);
+  }
+  .involve-card:hover h3,
+  .involve-card:hover p { color: white; }
+  .involve-icon {
+    font-size: 40px; margin-bottom: 20px;
+    display: block;
+  }
+  .involve-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; color: var(--text-dark); margin-bottom: 14px;
+  }
+  .involve-card p { font-size: 15px; color: var(--text-mid); line-height: 1.75; }
+
+  /* ── FOUNDER ── */
+  #founder {
+    background: var(--deep-maroon);
+    color: white;
+    position: relative; overflow: hidden;
+  }
+  #founder::after {
+    content: 'ॐ';
+    position: absolute; right: 5vw; top: 50%; transform: translateY(-50%);
+    font-size: 300px; opacity: 0.05; color: white; font-family: serif;
+    pointer-events: none; line-height: 1;
+  }
+
+  .founder-layout {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .founder-img {
+    aspect-ratio: 3/4;
+    background:
+      linear-gradient(to bottom, transparent 30%, rgba(123,27,46,0.9)),
+      url('https://images.unsplash.com/photo-1552058544-f2b08422138a?w=600&q=80') top center/cover;
+    position: relative;
+  }
+  .founder-img::before {
+    content: ''; position: absolute;
+    inset: -16px; border: 1px solid rgba(240,192,96,0.25);
+    pointer-events: none;
+  }
+  .founder-text h2 { color: white; }
+  .founder-text h2 em { color: var(--gold-light); }
+
+  .founder-quote {
+    border-left: 3px solid var(--gold);
+    padding: 20px 24px;
+    background: rgba(255,255,255,0.05);
+    margin: 32px 0;
+  }
+  .founder-quote .sanskrit {
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-size: 22px; color: var(--gold-light);
+  }
+  .founder-quote cite {
+    font-size: 12px; color: rgba(255,255,255,0.45);
+    font-family: 'Space Mono', monospace; font-style: normal;
+    letter-spacing: 0.05em;
+  }
+
+  .founder-signature {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-style: italic; color: var(--gold-light);
+    margin-top: 32px;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--cream);
+  }
+  .contact-layout {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+  }
+
+  .contact-info { }
+  .contact-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    margin-bottom: 32px;
+  }
+  .contact-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: var(--saffron);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .contact-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--saffron); margin-bottom: 4px;
+  }
+  .contact-val { font-size: 17px; color: var(--text-dark); }
+
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-field {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .form-field label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--text-mid);
+  }
+  .form-field input, .form-field textarea, .form-field select {
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    background: white; color: var(--text-dark);
+    font-family: 'Crimson Pro', serif; font-size: 16px;
+    outline: none; transition: border-color 0.2s;
+    width: 100%;
+  }
+  .form-field input:focus, .form-field textarea:focus, .form-field select:focus {
+    border-color: var(--saffron);
+  }
+  .form-field textarea { resize: vertical; min-height: 120px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text-dark); color: white;
+    padding: 64px 5vw 32px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 64px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 32px;
+  }
+  .footer-brand p {
+    font-size: 15px; color: rgba(255,255,255,0.5);
+    line-height: 1.8; margin-top: 16px; max-width: 320px;
+  }
+  .footer-col h4 {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--saffron); margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a {
+    color: rgba(255,255,255,0.5); text-decoration: none;
+    font-size: 15px; transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--gold-light); }
+
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom p {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.3);
+  }
+  .footer-logo-mark {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--saffron), var(--deep-maroon));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; color: white;
+    font-size: 14px; font-weight: 800;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .about-grid, .programs-grid, .cases-grid,
+    .involve-grid, .founder-layout, .contact-layout,
+    .testimonials-track { grid-template-columns: 1fr 1fr; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .tracker-layout { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .about-grid, .programs-grid, .cases-grid,
+    .involve-grid, .founder-layout, .contact-layout,
+    .testimonials-track, .footer-top { grid-template-columns: 1fr; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 72px 24px; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .health-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-mark">R</div>
+    <div class="nav-brand">
+      Ramleela Samajik<br>Vikas Kendra
+      <small>Arghakhanchi, Nepal</small>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#tracker">Students</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#get-involved">Join Us</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ornament"></div>
+  <div class="hero-mandala"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Arghakhanchi, Nepal &nbsp;·&nbsp; Since Community</p>
+    <h1 class="hero-title">
+      Education, Skills<br>& <em>Dignity</em> For All
+    </h1>
+    <p class="hero-subtitle">Empowering rural youth with computer skills & accessible healthcare in the mountains of Nepal</p>
+    <p class="hero-sanskrit">कर्मण्येवाधिकारस्ते</p>
+    <p class="hero-translation">Your right is to perform your duty sincerely — The Bhagavad Gita</p>
+    <div class="hero-actions">
+      <a href="#programs" class="btn-primary">Our Programs</a>
+      <a href="#tracker" class="btn-outline">Student Progress</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">90+</div>
+    <div class="stat-label">Students Enrolled</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">2</div>
+    <div class="stat-label">Schools Active</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">5</div>
+    <div class="stat-label">Countries Reached</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">∞</div>
+    <div class="stat-label">Dreams Nurtured</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-image-wrap reveal">
+      <div class="about-img-frame"></div>
+      <div class="about-card">
+        <div class="about-card-num">2+</div>
+        <div class="about-card-label">Decades of<br>lived experience</div>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <div class="section-header">
+        <p class="eyebrow">Our Story</p>
+        <h2>Born From <em>Life Itself</em></h2>
+        <p class="section-lead">Ramleela Samajik Vikas Kendra is a community-driven NGO formed by people who deeply understand the challenges of rural Arghakhanchi, Nepal.</p>
+      </div>
+      <p>Shri Ram Bahadur Kunwar and his wife Mrs. Leela Devi began their life from Golkhada, Arghakhanchi — with limited resources but unlimited determination. Their dream was simple: a dignified livelihood and better future for their children through education and values.</p>
+
+      <div class="quote-block">
+        <p class="sanskrit">परहित सरिस धर्म नहिं भाई</p>
+        <p>There is no greater dharma than serving others.</p>
+        <cite>— The Ramayana</cite>
+      </div>
+
+      <p>From this lived experience emerged our Kendra — an initiative proving that if one family can rise through hard work and education, <strong>every family can.</strong></p>
+      <p style="margin-top:16px">Today, our students work and thrive in Nepal, India, Australia, New Zealand, and the United States — guided at every stage by our dedicated skill mentors.</p>
+      <br>
+      <a href="#programs" class="btn-primary" style="display:inline-block">Explore Our Work</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div class="section-header centered">
+    <p class="eyebrow centered">What We Do</p>
+    <h2>Programs That <em>Transform Lives</em></h2>
+    <p class="section-lead">Practical skills that equip young people to succeed locally and globally.</p>
+  </div>
+  <div class="programs-grid">
+    <div class="program-card reveal">
+      <div class="program-icon">💻</div>
+      <h3>Basic Computer Skills Program</h3>
+      <p>Running in two schools in Arghakhanchi — Shri Argharajsthal Madhyamik Vidhyalya (Argha Raisechoor & Pakale Kimdada). Each school serves 45+ active students.</p>
+      <div class="program-tags">
+        <span class="tag">MS Office</span>
+        <span class="tag">Internet</span>
+        <span class="tag">IT Literacy</span>
+        <span class="tag">Career Guidance</span>
+      </div>
+    </div>
+    <div class="program-card featured reveal">
+      <div class="program-icon" style="color:var(--gold-light)">🏥</div>
+      <div class="pilot-badge">Upcoming Pilot</div>
+      <h3>Medical Lab Facility</h3>
+      <p>Setting up accessible lab testing facilities near local health posts — ending the need for vulnerable families to travel all the way to Sandhikharka for basic tests.</p>
+      <div class="program-tags">
+        <span class="tag" style="border-color:rgba(240,192,96,0.4);color:var(--gold-light)">Free Testing</span>
+        <span class="tag" style="border-color:rgba(240,192,96,0.4);color:var(--gold-light)">Early Detection</span>
+        <span class="tag" style="border-color:rgba(240,192,96,0.4);color:var(--gold-light)">Elder Care</span>
+      </div>
+    </div>
+    <div class="program-card future reveal">
+      <div class="program-icon" style="color:var(--mountain-mist)">🚀</div>
+      <h3>Future Skill Development</h3>
+      <p>Planned expansion into spoken English, financial literacy, vocational training, overseas career counseling, and dedicated women-focused livelihood programs.</p>
+      <div class="program-tags">
+        <span class="tag" style="border-color:rgba(143,168,200,0.4);color:var(--mountain-mist)">Entrepreneurship</span>
+        <span class="tag" style="border-color:rgba(143,168,200,0.4);color:var(--mountain-mist)">Women-Focused</span>
+        <span class="tag" style="border-color:rgba(143,168,200,0.4);color:var(--mountain-mist)">Global Ready</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDENT TRACKER -->
+<section id="tracker">
+  <div class="section-header">
+    <p class="eyebrow">Student Development</p>
+    <h2>Individual Progress <em>Dashboard</em></h2>
+    <p class="section-lead">Track each student's academic progress and health reports — ensuring no child is left behind.</p>
+  </div>
+
+  <div class="tracker-layout">
+    <div class="student-list">
+      <div class="student-list-header">Enrolled Students (Class X–XII)</div>
+      <div class="student-item active" onclick="showProfile(0)">
+        <div class="student-avatar">A</div>
+        <div class="student-info">
+          <div class="student-name">Aarav Kunwar</div>
+          <div class="student-class">Class XII · Raisechoor</div>
+        </div>
+        <div class="student-status"></div>
+      </div>
+      <div class="student-item" onclick="showProfile(1)">
+        <div class="student-avatar">P</div>
+        <div class="student-info">
+          <div class="student-name">Priya Sharma</div>
+          <div class="student-class">Class XI · Kimdada</div>
+        </div>
+        <div class="student-status"></div>
+      </div>
+      <div class="student-item" onclick="showProfile(2)">
+        <div class="student-avatar">R</div>
+        <div class="student-info">
+          <div class="student-name">Rajan Thapa</div>
+          <div class="student-class">Class X · Raisechoor</div>
+        </div>
+        <div class="student-status avg"></div>
+      </div>
+      <div class="student-item" onclick="showProfile(3)">
+        <div class="student-avatar">S</div>
+        <div class="student-info">
+          <div class="student-name">Sunita Gurung</div>
+          <div class="student-class">Class X · Kimdada</div>
+        </div>
+        <div class="student-status"></div>
+      </div>
+      <div class="student-item" onclick="showProfile(4)">
+        <div class="student-avatar">B</div>
+        <div class="student-info">
+          <div class="student-name">Bikash Poudel</div>
+          <div class="student-class">Class XII · Raisechoor</div>
+        </div>
+        <div class="student-status avg"></div>
+      </div>
+      <div class="student-item" onclick="showProfile(5)">
+        <div class="student-avatar">M</div>
+        <div class="student-info">
+          <div class="student-name">Maya Khadka</div>
+          <div class="student-class">Class XI · Raisechoor</div>
+        </div>
+        <div class="student-status"></div>
+      </div>
+    </div>
+
+    <div class="profile-panel" id="profilePanel">
+      <div class="profile-header">
+        <div class="profile-avatar-lg" id="pAvatar">A</div>
+        <div class="profile-meta">
+          <h3 id="pName">Aarav Kunwar</h3>
+          <p id="pMeta">Class XII · Shri Argharajsthal Madhyamik Vidhyalya, Raisechoor</p>
+        </div>
+      </div>
+      <div class="profile-body">
+        <div class="profile-tabs">
+          <button class="tab-btn active" onclick="switchTab('academic')">Academic</button>
+          <button class="tab-btn" onclick="switchTab('health')">Health Report</button>
+          <button class="tab-btn" onclick="switchTab('notes')">Mentor Notes</button>
+        </div>
+
+        <!-- ACADEMIC TAB -->
+        <div class="tab-content active" id="tab-academic">
+          <div class="metrics-grid" id="metricsGrid">
+            <div class="metric-box">
+              <div class="metric-val" id="mAttend">92%</div>
+              <div class="metric-lab">Attendance</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val" id="mGrade">A</div>
+              <div class="metric-lab">Overall Grade</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val" id="mModules">6/8</div>
+              <div class="metric-lab">Modules Done</div>
+            </div>
+          </div>
+          <div class="progress-list" id="progressList">
+            <div class="progress-item">
+              <div class="progress-label"><span>Computer Fundamentals</span><span>100%</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label"><span>MS Word & Excel</span><span>95%</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label"><span>PowerPoint & Presentations</span><span>88%</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label"><span>Internet & Email</span><span>90%</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label"><span>Digital Awareness</span><span>75%</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HEALTH TAB -->
+        <div class="tab-content" id="tab-health">
+          <div class="health-grid" id="healthGrid">
+            <div class="health-card">
+              <div class="health-icon">⚖️</div>
+              <div>
+                <div class="health-val" id="hBMI">21.4</div>
+                <div class="health-name">BMI</div>
+                <span class="health-status-badge badge-good">Normal</span>
+              </div>
+            </div>
+            <div class="health-card">
+              <div class="health-icon">💉</div>
+              <div>
+                <div class="health-val" id="hHb">13.2</div>
+                <div class="health-name">Haemoglobin (g/dL)</div>
+                <span class="health-status-badge badge-good">Normal</span>
+              </div>
+            </div>
+            <div class="health-card">
+              <div class="health-icon">👁️</div>
+              <div>
+                <div class="health-val" id="hVision">6/6</div>
+                <div class="health-name">Vision</div>
+                <span class="health-status-badge badge-good">Clear</span>
+              </div>
+            </div>
+            <div class="health-card">
+              <div class="health-icon">🦷</div>
+              <div>
+                <div class="health-val" id="hDental">Good</div>
+                <div class="health-name">Dental Health</div>
+                <span class="health-status-badge badge-good">Healthy</span>
+              </div>
+            </div>
+          </div>
+          <div class="test-history">
+            <h4>Lab Test History</h4>
+            <div class="test-row header">
+              <span>Test</span><span>Result</span><span>Date</span><span>Status</span>
+            </div>
+            <div id="labRows">
+              <div class="test-row"><span>Blood CBC</span><span>Normal</span><span>Jan 2025</span><span><span class="health-status-badge badge-good">✓ Good</span></span></div>
+              <div class="test-row"><span>Malaria Screen</span><span>Negative</span><span>Jan 2025</span><span><span class="health-status-badge badge-good">✓ Clear</span></span></div>
+              <div class="test-row"><span>Typhoid (Widal)</span><span>Negative</span><span>Dec 2024</span><span><span class="health-status-badge badge-good">✓ Clear</span></span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NOTES TAB -->
+        <div class="tab-content" id="tab-notes">
+          <div style="padding:8px 0">
+            <div id="notesContent">
+              <div style="background:var(--cream);padding:20px 24px;border-left:3px solid var(--saffron);margin-bottom:16px;">
+                <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron);margin-bottom:8px">Mentor Note · March 2025</div>
+                <p>Aarav has shown exceptional aptitude in Excel and is already helping juniors. Recommend for advanced digital skills track. Strong candidate for overseas education pathway.</p>
+              </div>
+              <div style="background:var(--cream);padding:20px 24px;border-left:3px solid var(--mountain-blue);margin-bottom:16px;">
+                <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mountain-blue);margin-bottom:8px">Career Guidance · Jan 2025</div>
+                <p>Discussed options: B.Sc IT in Kathmandu or vocational pathway in India. Parents supportive. Follow up with scholarship resources in next session.</p>
+              </div>
+              <div style="background:var(--cream);padding:20px 24px;border-left:3px solid var(--forest);">
+                <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--forest);margin-bottom:8px">Health Follow-up · Dec 2024</div>
+                <p>Mild eyestrain noted from extended screen use. Advised 20-20-20 rule. No prescription glasses needed at this time. Recheck in 6 months.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT / CASE STUDIES -->
+<section id="impact">
+  <div class="section-header centered">
+    <p class="eyebrow centered" style="color:var(--gold-light)">Real Stories</p>
+    <h2 style="color:white">Impact That <em style="color:var(--gold-light)">Crosses Borders</em></h2>
+    <p class="section-lead" style="color:rgba(255,255,255,0.6)">Students from the mountains of Arghakhanchi are now building lives across the world.</p>
+  </div>
+  <div class="cases-grid">
+    <div class="case-card reveal">
+      <div class="case-number">01</div>
+      <div class="case-location">Australia</div>
+      <h3>From Village Classroom to Australia</h3>
+      <p>A student trained under our computer program later pursued higher studies and is now working in Australia. Basic IT skills helped him adapt quickly to global work environments.</p>
+      <span class="case-tag">Computer Skills → Global Career</span>
+    </div>
+    <div class="case-card featured-case reveal">
+      <div class="case-number">02</div>
+      <div class="case-location">India</div>
+      <h3>Supporting a Stable Career in India</h3>
+      <p>A student from Arghakhanchi used computer and communication skills gained through our mentorship to secure stable employment in India — sending remittances home.</p>
+      <span class="case-tag">Mentorship → Employment</span>
+    </div>
+    <div class="case-card reveal">
+      <div class="case-number">03</div>
+      <div class="case-location">Nepal (Local)</div>
+      <h3>Empowering a First-Generation Learner</h3>
+      <p>A young student with no prior computer exposure gained confidence, improved academic performance, and now mentors juniors in digital skills — a cycle of upliftment.</p>
+      <span class="case-tag">Zero to Mentor</span>
+    </div>
+    <div class="case-card reveal">
+      <div class="case-number">04</div>
+      <div class="case-location">New Zealand</div>
+      <h3>Helping a Student Settle Abroad</h3>
+      <p>Our guidance supported a student in preparing for overseas education, navigating paperwork, adapting to professional life — from remote village to New Zealand.</p>
+      <span class="case-tag">Overseas Education</span>
+    </div>
+    <div class="case-card reveal">
+      <div class="case-number">05</div>
+      <div class="case-location">Community Impact</div>
+      <h3>Local Heroes Serving Nepal</h3>
+      <p>Several trained students are now employed locally in offices, schools, and service centers — contributing back to their communities and becoming role models.</p>
+      <span class="case-tag">Community Service</span>
+    </div>
+    <div class="case-card reveal" style="background:rgba(232,101,26,0.12);border-color:rgba(232,101,26,0.25)">
+      <div class="case-number" style="color:rgba(232,101,26,0.15)">→</div>
+      <div class="case-location" style="color:var(--saffron)">Your Story</div>
+      <h3>Be The Next Success Story</h3>
+      <p>Every great journey starts with a single step. Join our program or support a student's dream — and write the next chapter of Ramleela's story.</p>
+      <a href="#get-involved" class="btn-primary" style="margin-top:24px;display:inline-block">Get Involved</a>
+    </div>
+  </div>
+</section>
+
+<!-- ENDORSEMENTS -->
+<section id="endorsements">
+  <div class="section-header centered">
+    <p class="eyebrow centered">Voices of Trust</p>
+    <h2>What People <em>Say About Us</em></h2>
+  </div>
+  <div class="testimonials-track">
+    <div class="testimonial reveal">
+      <p>"Ramleela Samajik Vikas Kendra is creating real change by focusing on skills that matter. Their mentorship helped shape my career and confidence."</p>
+      <div class="testimonial-author">
+        <div class="author-dot"></div>
+        <div>
+          <div class="author-name">Alumni, Working Abroad</div>
+          <div class="author-role">Program Graduate</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial reveal">
+      <p>"This initiative is a blessing for rural students. Access to computer education at school level is transforming futures that were once limited by geography."</p>
+      <div class="testimonial-author">
+        <div class="author-dot" style="background:linear-gradient(135deg,var(--mountain-blue),var(--mountain-mist))"></div>
+        <div>
+          <div class="author-name">Local Educator</div>
+          <div class="author-role">Teacher, Arghakhanchi</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial reveal">
+      <p>"The vision of combining education and healthcare shows deep understanding of community needs. This is the model every rural NGO should follow."</p>
+      <div class="testimonial-author">
+        <div class="author-dot" style="background:linear-gradient(135deg,var(--forest),var(--mountain-blue))"></div>
+        <div>
+          <div class="author-name">Community Leader</div>
+          <div class="author-role">Village Representative, Argha</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder">
+  <div class="founder-layout">
+    <div class="founder-img reveal"></div>
+    <div class="founder-text reveal">
+      <p class="eyebrow" style="color:var(--gold-light)">Founder's Message</p>
+      <h2>A Message From <em>Our Heart</em></h2>
+      <p style="color:rgba(255,255,255,0.75);margin-bottom:20px">
+        Namaskar. I come from the same soil, the same villages, and the same struggles as many of you reading this. Ramleela Samajik Vikas Kendra was not created overnight — it is the result of decades of learning, sacrifice, and reflection.
+      </p>
+      <p style="color:rgba(255,255,255,0.65)">
+        My parents, Shri Ram Bahadur Kunwar and Mrs. Leela Devi, taught us that honest hard work never goes unrewarded. What they achieved for their children, we now wish to extend to every child and family in our region.
+      </p>
+      <div class="founder-quote">
+        <p class="sanskrit">धैर्यं सर्वत्र साधनम्</p>
+        <p style="color:rgba(255,255,255,0.7);margin-top:6px">Patience and perseverance are the keys to success.</p>
+        <cite>— Sanskrit Proverb</cite>
+      </div>
+      <p style="color:rgba(255,255,255,0.65)">
+        I invite you to join us — not just as supporters, but as partners in this journey. Together, let us build a future where dignity, service, and compassion guide our actions.
+      </p>
+      <div class="founder-signature">This is our shared Ramleela. 🙏</div>
+    </div>
+  </div>
+</section>
+
+<!-- GET INVOLVED -->
+<section id="get-involved">
+  <div class="section-header centered">
+    <p class="eyebrow centered">Join the Journey</p>
+    <h2>How You Can <em>Make a Difference</em></h2>
+  </div>
+  <div class="involve-grid">
+    <div class="involve-card reveal">
+      <span class="involve-icon">🤲</span>
+      <h3>Volunteer</h3>
+      <p>Share your skills — teaching, mentoring, healthcare, or technical expertise — and directly impact lives in Arghakhanchi.</p>
+    </div>
+    <div class="involve-card reveal">
+      <span class="involve-icon">🤝</span>
+      <h3>Partner With Us</h3>
+      <p>Organizations, schools, and businesses can partner with us to expand programs, provide resources, or establish new skill tracks.</p>
+    </div>
+    <div class="involve-card reveal">
+      <span class="involve-icon">💛</span>
+      <h3>Donate</h3>
+      <p>Your contribution funds computer equipment, medical testing, student materials, and the dreams of children who deserve a fair chance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-layout">
+    <div class="contact-info reveal">
+      <div class="section-header">
+        <p class="eyebrow">Reach Us</p>
+        <h2>Let's Build <em>Together</em></h2>
+        <p class="section-lead">Whether you want to support, volunteer, or learn more — we'd love to hear from you.</p>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Location</div>
+          <div class="contact-val">Arghakhanchi District, Lumbini Province, Nepal</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🏫</div>
+        <div>
+          <div class="contact-label">Schools</div>
+          <div class="contact-val">Argha Raisechoor & Pakale Kimdada</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-val">info@ramleelakendra.org</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-val">+977 (0) XXX-XXXXXX</div>
+        </div>
+      </div>
+
+      <div style="background:var(--deep-maroon);color:white;padding:28px 32px;margin-top:16px">
+        <p class="eyebrow" style="color:var(--gold-light)">Vision & Mission</p>
+        <p style="margin-top:8px;font-size:16px;line-height:1.8;color:rgba(255,255,255,0.75)">
+          To build a self-reliant, skilled, and healthy society where every individual — regardless of background — has access to education, employable skills, and essential healthcare, enabling them to live with dignity anywhere in the world.
+        </p>
+      </div>
+    </div>
+
+    <div class="contact-form reveal">
+      <div class="form-field">
+        <label>Your Name</label>
+        <input type="text" placeholder="Full Name">
+      </div>
+      <div class="form-field">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com">
+      </div>
+      <div class="form-field">
+        <label>I want to</label>
+        <select>
+          <option>Volunteer my skills</option>
+          <option>Partner with RLSVK</option>
+          <option>Donate / Support</option>
+          <option>Inquire about programs</option>
+          <option>General inquiry</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Message</label>
+        <textarea placeholder="Tell us about yourself and how you'd like to help..."></textarea>
+      </div>
+      <button class="btn-primary" onclick="handleSubmit()" style="width:100%;padding:16px;font-size:12px;clip-path:none;cursor:pointer;border:none">Send Message 🙏</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="footer-logo-mark">R</div>
+        <span style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700">Ramleela Samajik<br>Vikas Kendra</span>
+      </div>
+      <p>Empowering rural communities through education, skill development, and accessible healthcare in the mountains of Arghakhanchi, Nepal.</p>
+      <p style="margin-top:16px;font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,0.3);font-size:16px">"परहित सरिस धर्म नहिं भाई"</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#programs">Our Programs</a></li>
+        <li><a href="#tracker">Student Progress</a></li>
+        <li><a href="#impact">Impact Stories</a></li>
+        <li><a href="#founder">Founder's Message</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul>
+        <li><a href="#programs">Computer Skills</a></li>
+        <li><a href="#programs">Medical Lab (Pilot)</a></li>
+        <li><a href="#programs">Future Skills</a></li>
+        <li><a href="#get-involved">Volunteer</a></li>
+        <li><a href="#get-involved">Partner With Us</a></li>
+        <li><a href="#get-involved">Donate</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Ramleela Samajik Vikas Kendra · Arghakhanchi, Nepal · All Rights Reserved</p>
+    <p>Built with ❤️ for the communities of Arghakhanchi</p>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(r => observer.observe(r));
+
+// Student profiles data
+const students = [
+  {
+    name: "Aarav Kunwar", initial: "A", class: "Class XII · Raisechoor",
+    attend: "92%", grade: "A", modules: "6/8",
+    skills: [100,95,88,90,75],
+    health: { bmi:"21.4",hb:"13.2",vision:"6/6",dental:"Good",
+      bmiStatus:"badge-good",hbStatus:"badge-good",visionStatus:"badge-good",dentalStatus:"badge-good",
+      bmiLbl:"Normal",hbLbl:"Normal",visionLbl:"Clear",dentalLbl:"Healthy"
+    },
+    labs: [["Blood CBC","Normal","Jan 2025","badge-good"],["Malaria Screen","Negative","Jan 2025","badge-good"],["Typhoid (Widal)","Negative","Dec 2024","badge-good"]],
+    notes: [
+      {color:"var(--saffron)",label:"Mentor Note · March 2025",text:"Aarav has shown exceptional aptitude in Excel and is already helping juniors. Recommend for advanced digital skills track. Strong candidate for overseas education pathway."},
+      {color:"var(--mountain-blue)",label:"Career Guidance · Jan 2025",text:"Discussed options: B.Sc IT in Kathmandu or vocational pathway in India. Parents supportive. Follow up with scholarship resources."},
+      {color:"var(--forest)",label:"Health Follow-up · Dec 2024",text:"Mild eyestrain from extended screen use. Advised 20-20-20 rule. No prescription glasses needed. Recheck in 6 months."}
+    ]
+  },
+  {
+    name: "Priya Sharma", initial: "P", class: "Class XI · Kimdada",
+    attend: "88%", grade: "A+", modules: "5/8",
+    skills: [100,90,82,85,70],
+    health: { bmi:"19.8",hb:"11.4",vision:"6/9",dental:"Fair",
+      bmiStatus:"badge-good",hbStatus:"badge-avg",visionStatus:"badge-avg",dentalStatus:"badge-avg",
+      bmiLbl:"Normal",hbLbl:"Borderline",visionLbl:"Mild Blur",dentalLbl:"Monitor"
+    },
+    labs: [["Blood CBC","Mild Anemia","Feb 2025","badge-avg"],["Malaria Screen","Negative","Feb 2025","badge-good"],["Urine Routine","Normal","Feb 2025","badge-good"]],
+    notes: [
+      {color:"var(--saffron)",label:"Mentor Note · Feb 2025",text:"Priya is one of the strongest students academically but health needs attention. Iron supplements recommended by health worker. Parents informed."},
+      {color:"var(--deep-maroon)",label:"Health Note · Feb 2025",text:"Haemoglobin at 11.4 — borderline anaemia. Diet counselling done. Re-test in 3 months. Vision also shows mild blur — advised to see eye specialist at next camp."}
+    ]
+  },
+  {
+    name: "Rajan Thapa", initial: "R", class: "Class X · Raisechoor",
+    attend: "74%", grade: "B", modules: "4/8",
+    skills: [80,65,60,55,50],
+    health: { bmi:"22.1",hb:"14.0",vision:"6/6",dental:"Good",
+      bmiStatus:"badge-good",hbStatus:"badge-good",visionStatus:"badge-good",dentalStatus:"badge-good",
+      bmiLbl:"Normal",hbLbl:"Normal",visionLbl:"Clear",dentalLbl:"Healthy"
+    },
+    labs: [["Blood CBC","Normal","Jan 2025","badge-good"],["Malaria Screen","Negative","Jan 2025","badge-good"]],
+    notes: [
+      {color:"var(--saffron)",label:"Attendance Alert · March 2025",text:"Rajan's attendance has dropped to 74%. Family visit conducted — father's illness causing Rajan to assist at home. Support being arranged."},
+      {color:"var(--mountain-blue)",label:"Academic Note · Feb 2025",text:"Strong aptitude when present. Potential is high. Intervention plan in place to support family situation and bring attendance back on track."}
+    ]
+  },
+  {
+    name: "Sunita Gurung", initial: "S", class: "Class X · Kimdada",
+    attend: "95%", grade: "A", modules: "5/8",
+    skills: [100,88,80,92,78],
+    health: { bmi:"20.5",hb:"12.8",vision:"6/6",dental:"Good",
+      bmiStatus:"badge-good",hbStatus:"badge-good",visionStatus:"badge-good",dentalStatus:"badge-good",
+      bmiLbl:"Normal",hbLbl:"Normal",visionLbl:"Clear",dentalLbl:"Healthy"
+    },
+    labs: [["Blood CBC","Normal","Jan 2025","badge-good"],["Typhoid (Widal)","Negative","Jan 2025","badge-good"]],
+    notes: [
+      {color:"var(--saffron)",label:"Mentor Note · March 2025",text:"Sunita is a model student — excellent attendance, helping peers. Identified for the women's leadership track when it launches. First-generation learner making her family proud."}
+    ]
+  },
+  {
+    name: "Bikash Poudel", initial: "B", class: "Class XII · Raisechoor",
+    attend: "80%", grade: "B+", modules: "7/8",
+    skills: [100,92,88,80,65],
+    health: { bmi:"24.2",hb:"13.5",vision:"6/6",dental:"Fair",
+      bmiStatus:"badge-avg",hbStatus:"badge-good",visionStatus:"badge-good",dentalStatus:"badge-avg",
+      bmiLbl:"Borderline",hbLbl:"Normal",visionLbl:"Clear",dentalLbl:"Monitor"
+    },
+    labs: [["Blood CBC","Normal","Feb 2025","badge-good"],["Blood Sugar","Pre-diabetic","Feb 2025","badge-avg"],["Lipid Profile","Borderline","Feb 2025","badge-avg"]],
+    notes: [
+      {color:"var(--saffron)",label:"Mentor Note · March 2025",text:"Bikash has nearly completed all modules and is preparing for IT entrance exams. Excited about opportunities in Kathmandu."},
+      {color:"var(--deep-maroon)",label:"Health Alert · Feb 2025",text:"Blood sugar at pre-diabetic level — dietary changes advised. Referred to health worker for follow-up. Parents counselled on importance of regular testing."}
+    ]
+  },
+  {
+    name: "Maya Khadka", initial: "M", class: "Class XI · Raisechoor",
+    attend: "96%", grade: "A+", modules: "6/8",
+    skills: [100,98,95,90,88],
+    health: { bmi:"18.9",hb:"12.1",vision:"6/6",dental:"Good",
+      bmiStatus:"badge-avg",hbStatus:"badge-avg",visionStatus:"badge-good",dentalStatus:"badge-good",
+      bmiLbl:"Underweight",hbLbl:"Low-Normal",visionLbl:"Clear",dentalLbl:"Healthy"
+    },
+    labs: [["Blood CBC","Normal","Jan 2025","badge-good"],["Malaria Screen","Negative","Jan 2025","badge-good"],["Thyroid (TSH)","Normal","Jan 2025","badge-good"]],
+    notes: [
+      {color:"var(--saffron)",label:"Star Student · March 2025",text:"Maya is the top performer in her batch. Nutrition counselling done for low BMI. She is passionate about becoming a teacher and mentoring future students."},
+      {color:"var(--forest)",label:"Health Note · Jan 2025",text:"BMI slightly low at 18.9 — nutrition guidance provided. No clinical concern currently but monitor weight over next 3 months."}
+    ]
+  }
+];
+
+const skillLabels = ["Computer Fundamentals","MS Word & Excel","PowerPoint","Internet & Email","Digital Awareness"];
+
+function showProfile(idx) {
+  document.querySelectorAll('.student-item').forEach((el,i) => el.classList.toggle('active', i===idx));
+  const s = students[idx];
+  document.getElementById('pAvatar').textContent = s.initial;
+  document.getElementById('pName').textContent = s.name;
+  document.getElementById('pMeta').textContent = s.class;
+  document.getElementById('mAttend').textContent = s.attend;
+  document.getElementById('mGrade').textContent = s.grade;
+  document.getElementById('mModules').textContent = s.modules;
+
+  // Skills
+  const pl = document.getElementById('progressList');
+  pl.innerHTML = s.skills.map((v,i) => `
+    <div class="progress-item">
+      <div class="progress-label"><span>${skillLabels[i]}</span><span>${v}%</span></div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${v}%"></div></div>
+    </div>`).join('');
+
+  // Health
+  const h = s.health;
+  document.getElementById('hBMI').textContent = h.bmi;
+  document.getElementById('hHb').textContent = h.hb;
+  document.getElementById('hVision').textContent = h.vision;
+  document.getElementById('hDental').textContent = h.dental;
+  document.querySelector('#hBMI + .health-name + .health-status-badge').className = `health-status-badge ${h.bmiStatus}`;
+  document.querySelector('#hBMI + .health-name + .health-status-badge').textContent = h.bmiLbl;
+
+  // Labs
+  document.getElementById('labRows').innerHTML = s.labs.map(r => `
+    <div class="test-row">
+      <span>${r[0]}</span><span>${r[1]}</span><span>${r[2]}</span>
+      <span><span class="health-status-badge ${r[3]}">${r[3]==='badge-good'?'✓ Good':'⚠ Warn'}</span></span>
+    </div>`).join('');
+
+  // Notes
+  document.getElementById('notesContent').innerHTML = s.notes.map(n => `
+    <div style="background:var(--cream);padding:20px 24px;border-left:3px solid ${n.color};margin-bottom:16px;">
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:${n.color};margin-bottom:8px">${n.label}</div>
+      <p>${n.text}</p>
+    </div>`).join('');
+
+  switchTab('academic');
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach((b,i) => {
+    const tabs = ['academic','health','notes'];
+    b.classList.toggle('active', tabs[i]===tab);
+  });
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+}
+
+function handleSubmit() {
+  alert('Thank you for reaching out to Ramleela Samajik Vikas Kendra! 🙏\nWe will get back to you shortly.\n\nनमस्कार — Your message matters to us.');
+}
+
+// Animate numbers on scroll
+const statNums = document.querySelectorAll('.stat-num');
+let animated = false;
+window.addEventListener('scroll', () => {
+  if (!animated && window.scrollY > 200) {
+    animated = true;
+    statNums.forEach(el => {
+      const target = el.textContent;
+      if (!isNaN(parseInt(target))) {
+        let start = 0;
+        const end = parseInt(target);
+        const step = Math.ceil(end / 40);
+        const timer = setInterval(() => {
+          start += step;
+          if (start >= end) { el.textContent = target; clearInterval(timer); }
+          else el.textContent = start + (target.includes('+') ? '+' : '');
+        }, 40);
+      }
+    });
+  }
+});
+</script>
+</body>
+</html>
